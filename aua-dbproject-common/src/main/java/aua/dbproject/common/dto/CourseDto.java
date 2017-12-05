@@ -1,5 +1,6 @@
 package aua.dbproject.common.dto;
 
+import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
 import java.util.GregorianCalendar;
@@ -16,11 +17,11 @@ public class CourseDto {
     private Integer crn;
     private Integer capacity;
     private Integer credits;
-    private String start_date;  // maybe use just string?
-    private String end_date;
+    private Date start_date;  // maybe use just string?
+    private Date end_date;
     private String week_days;  // remeber to put back List<String>
-    private String start_time;
-    private String end_time;
+    private LocalTime start_time;
+    private LocalTime end_time;
     private String building;
     private String room;
     private String instructor_name;
@@ -29,7 +30,7 @@ public class CourseDto {
 
     }
 
-    public CourseDto(String subject_code, Integer course_code, String section, String title, Integer crn, Integer capacity, Integer credits, String start_date, String end_date, String week_days, String start_time, String end_time, String building, String room, String instructor_name) {
+    public CourseDto(String subject_code, Integer course_code, String section, String title, Integer crn, Integer capacity, Integer credits, Date start_date, Date end_date, String week_days, LocalTime start_time, LocalTime end_time, String building, String room, String instructor_name) {
         this.subject_code = subject_code;
         this.course_code = course_code;
         this.section = section;
@@ -103,19 +104,19 @@ public class CourseDto {
         this.credits = credits;
     }
 
-    public String getStart_date() {
+    public Date getStart_date() {
         return start_date;
     }
 
-    public void setStart_date(String  start_date) {
+    public void setStart_date(Date  start_date) {
         this.start_date = start_date;
     }
 
-    public String  getEnd_date() {
+    public Date  getEnd_date() {
         return end_date;
     }
 
-    public void setEnd_date(String  end_date) {
+    public void setEnd_date(Date  end_date) {
         this.end_date = end_date;
     }
 
@@ -127,19 +128,19 @@ public class CourseDto {
         this.week_days = week_days;
     }
 
-    public String  getStart_time() {
+    public LocalTime  getStart_time() {
         return start_time;
     }
 
-    public void setStart_time(String  start_time) {
+    public void setStart_time(LocalTime  start_time) {
         this.start_time = start_time;
     }
 
-    public String  getEnd_time() {
+    public LocalTime  getEnd_time() {
         return end_time;
     }
 
-    public void setEnd_time(String  end_time) {
+    public void setEnd_time(LocalTime  end_time) {
         this.end_time = end_time;
     }
 
