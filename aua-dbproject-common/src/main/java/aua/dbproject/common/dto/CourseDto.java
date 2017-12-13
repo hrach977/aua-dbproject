@@ -20,8 +20,8 @@ public class CourseDto {
     private Date start_date;  // maybe use just string?
     private Date end_date;
     private String week_days;  // remeber to put back List<String>
-    private LocalTime start_time;
-    private LocalTime end_time;
+    private String start_time;  //localtime not practicle in our case
+    private String end_time;
     private String building;
     private String room;
     private String instructor_name;
@@ -30,7 +30,7 @@ public class CourseDto {
 
     }
 
-    public CourseDto(String subject_code, Integer course_code, String section, String title, Integer crn, Integer capacity, Integer credits, Date start_date, Date end_date, String week_days, LocalTime start_time, LocalTime end_time, String building, String room, String instructor_name) {
+    public CourseDto(String subject_code, Integer course_code, String section, String title, Integer crn, Integer capacity, Integer credits, Date start_date, Date end_date, String week_days, String start_time, String end_time, String building, String room, String instructor_name) {
         this.subject_code = subject_code;
         this.course_code = course_code;
         this.section = section;
@@ -128,19 +128,19 @@ public class CourseDto {
         this.week_days = week_days;
     }
 
-    public LocalTime  getStart_time() {
+    public String  getStart_time() {
         return start_time;
     }
 
-    public void setStart_time(LocalTime  start_time) {
+    public void setStart_time(String  start_time) {
         this.start_time = start_time;
     }
 
-    public LocalTime  getEnd_time() {
+    public String  getEnd_time() {
         return end_time;
     }
 
-    public void setEnd_time(LocalTime  end_time) {
+    public void setEnd_time(String  end_time) {
         this.end_time = end_time;
     }
 

@@ -1,6 +1,7 @@
 package aua.dbproject.service.repository;
 
 import aua.dbproject.common.filter.CourseFilters;
+import aua.dbproject.service.service.CourseService;
 import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.Client;
@@ -36,6 +37,11 @@ public class CourseRepository {
     private CourseFilters courseFilters;
 
 
+//    public LocalTime[] busyTime(CourseFilters courseFilters){
+//
+//    }
+
+
     public BoolQueryBuilder filtering(CourseFilters courseFilters) throws IllegalArgumentException {
         BoolQueryBuilder bquery = QueryBuilders.boolQuery();
 
@@ -45,6 +51,10 @@ public class CourseRepository {
         if(!courseFilters.getTitle().isEmpty()){
             bquery.filter(QueryBuilders.matchQuery("title", courseFilters.getTitle()));
         }
+        if(courseFilters.getBusyTime().length!=0){
+            bquery.mustNot(QueryBuilders.termsQuery("start_time", courseFilters.getBusyTime()));
+        }
+
 //        if(courseFilters.getUpper()){
 //            bquery.filter(QueryBuilders.prefixQuery("course_code", "2"));
 //        }
@@ -98,10 +108,10 @@ public class CourseRepository {
 //                weekdays.add((String) wd);
 //            }
 
-            String  sTime = (String) sh.getSource().get("start_time");
-            LocalTime startTime = parse(sTime);
-            String  eTime = (String) sh.getSource().get("end_time");
-            LocalTime endTime = parse(eTime);
+            String  startTime = (String) sh.getSource().get("start_time");
+            //LocalTime startTime = parse(sTime);
+            String  endTime = (String) sh.getSource().get("end_time");
+            //LocalTime endTime = parse(eTime);
             String building = (String) sh.getSource().get("building");
             String room = (String) sh.getSource().get("room");
             String instructorName = (String) sh.getSource().get("instructor_name");
