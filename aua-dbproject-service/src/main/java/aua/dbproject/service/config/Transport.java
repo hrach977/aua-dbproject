@@ -21,9 +21,6 @@ import java.net.UnknownHostException;
  * Created by hrachyayeghishyan on 11/23/17.
  */
 @Configuration
-@PropertySources({
-        @PropertySource(value = "classpath:application.properties", ignoreResourceNotFound = true),
-})
 public class Transport {
 
     //@Autowired
