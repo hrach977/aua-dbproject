@@ -25,12 +25,13 @@ public class CourseDto {
     private String building;
     private String room;
     private String instructor_name;
+    private String cluster;
 
     public CourseDto(){
 
     }
 
-    public CourseDto(String subject_code, Integer course_code, String section, String title, Integer crn, Integer capacity, Integer credits, Date start_date, Date end_date, String week_days, String start_time, String end_time, String building, String room, String instructor_name) {
+    public CourseDto(String subject_code, Integer course_code, String section, String title, Integer crn, Integer capacity, Integer credits, Date start_date, Date end_date, String week_days, String start_time, String end_time, String building, String room, String instructor_name, String cluster) {
         this.subject_code = subject_code;
         this.course_code = course_code;
         this.section = section;
@@ -46,6 +47,14 @@ public class CourseDto {
         this.building = building;
         this.room = room;
         this.instructor_name = instructor_name;
+    }
+
+    public String getCluster() {
+        return cluster;
+    }
+
+    public void setCluster(String cluster) {
+        this.cluster = cluster;
     }
 
     public String getSubject_code() {

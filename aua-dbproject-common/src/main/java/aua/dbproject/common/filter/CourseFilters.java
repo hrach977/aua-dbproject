@@ -10,19 +10,59 @@ import java.util.List;
  */
 public class CourseFilters {
     private String department;
+    private String begin;
+    private String finish;
     private String title;
     private String instructor;
+    private String weekDays;
+    private String clusters;
     //@JsonProperty("busyTime")
     private String[] busyTime;
 //    private Boolean upper;
 //
     public CourseFilters(){}
 
-    public CourseFilters(String department, String title, String instructor, String[] busyTime) {
+    public CourseFilters(String department, String begin, String finish, String title, String instructor, String weekDays, String clusters, String[] busyTime) {
         this.department = department;
+        this.begin = begin;
+        this.finish = finish;
         this.title = title;
         this.instructor = instructor;
+        this.weekDays = weekDays;
+        this.clusters = clusters;
         this.busyTime = busyTime;
+    }
+
+    public String getClusters() {
+        return clusters;
+    }
+
+    public String getBegin() {
+        return begin;
+    }
+
+    public void setBegin(String begin) {
+        this.begin = begin;
+    }
+
+    public String getFinish() {
+        return finish;
+    }
+
+    public void setFinish(String finish) {
+        this.finish = finish;
+    }
+
+    public void setClusters(String clusters) {
+        this.clusters = clusters;
+    }
+
+    public String getWeekDays() {
+        return weekDays;
+    }
+
+    public void setWeekDays(String weekDays) {
+        this.weekDays = weekDays;
     }
 
     public String getDepartment() {

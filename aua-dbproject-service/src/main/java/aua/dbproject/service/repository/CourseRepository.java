@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import aua.dbproject.common.dto.CourseDto;
 
+import javax.management.Query;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -48,12 +49,22 @@ public class CourseRepository {
         if(!courseFilters.getDepartment().isEmpty()){
             bquery.filter(QueryBuilders.termsQuery("subject_code", courseFilters.getDepartment()));
         }
+        if(!courseFilters.getBegin().isEmpty() && !courseFilters.getFinish().isEmpty()){
+            bquery.must(QueryBuilders.rangeQuery("start_time").gte(courseFilters.getBegin()).lt(courseFilters.getFinish()));
+        }
         if(!courseFilters.getTitle().isEmpty()){
             bquery.filter(QueryBuilders.matchQuery("title", courseFilters.getTitle()));
+        }
+        if(!courseFilters.getWeekDays().isEmpty()){
+            bquery.should(QueryBuilders.matchQuery("week_days", courseFilters.getWeekDays()));
+        }
+        if(!courseFilters.getClusters().isEmpty()){
+            bquery.should(QueryBuilders.matchQuery("cluster", courseFilters.getClusters()));
         }
         if(courseFilters.getBusyTime().length!=0){
             bquery.mustNot(QueryBuilders.termsQuery("start_time", courseFilters.getBusyTime()));
         }
+
 
 //        if(courseFilters.getUpper()){
 //            bquery.filter(QueryBuilders.prefixQuery("course_code", "2"));
@@ -67,7 +78,7 @@ public class CourseRepository {
 
 
     private SearchResponse getCS(CourseFilters courseFilters){
-        return client.prepareSearch("aua")
+        return client.prepareSearch("aua2")
                 .setQuery(filtering(courseFilters))
                 .get();
     }
@@ -114,9 +125,10 @@ public class CourseRepository {
             //LocalTime endTime = parse(eTime);
             String building = (String) sh.getSource().get("building");
             String room = (String) sh.getSource().get("room");
+            String cluster = (String) sh.getSource().get("cluster");
             String instructorName = (String) sh.getSource().get("instructor_name");
 
-            result.add(new CourseDto(subjectCode, courseCode, section, title, crn, capacity, credits, startDate, endDate, weekdays, startTime, endTime, building, room, instructorName));
+            result.add(new CourseDto(subjectCode, courseCode, section, title, crn, capacity, credits, startDate, endDate, weekdays, startTime, endTime, building, room, instructorName, cluster));
         }
         return result;
     }

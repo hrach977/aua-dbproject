@@ -23,18 +23,18 @@ import java.net.UnknownHostException;
 @Configuration
 public class Transport {
 
-    //@Autowired
-    //private Environment env;
+//    @Autowired
+//    private Environment env;
 
     @Value("${elasticsearch.cluster.name}")
     private String clusterName; //= env.getProperty("elasticsearch.cluster.name");
 
 
     @Value("${elasticsearch.host}")
-    private String node_name; //= env.getProperty("elasticsearch.host");
+    private String node_name; // = env.getProperty("elasticsearch.host");
 
     @Value("${elasticsearch.address}")
-    private String address; //= env.getProperty("elasticsearch.address");
+    private String address; // = env.getProperty("elasticsearch.address");
 
 
     @Value("${elasticsearch.port}")
