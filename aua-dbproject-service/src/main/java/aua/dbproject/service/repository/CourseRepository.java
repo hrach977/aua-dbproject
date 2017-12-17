@@ -58,7 +58,7 @@ public class CourseRepository {
         }
         if(!courseFilters.getWeekDays().isEmpty()){
             bquery.must(QueryBuilders.matchQuery("week_days", "M W F"));
-            //cquery.must(QueryBuilders.matchQuery("week_days", ""));
+
         }
         if(!courseFilters.getClusters().isEmpty()){
             bquery.must(QueryBuilders.matchQuery("cluster", courseFilters.getClusters()));
