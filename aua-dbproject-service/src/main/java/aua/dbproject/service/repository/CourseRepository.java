@@ -34,7 +34,6 @@ public class CourseRepository {
 
         if(!courseFilters.getDepartment().isEmpty()){
             bquery.filter(QueryBuilders.termsQuery("subject_code", courseFilters.getDepartment()));
-            // cquery.filter(QueryBuilders.termsQuery("subject_code", courseFilters.getDepartment()));
         }
         if(!courseFilters.getInstructor().isEmpty()){
             bquery.filter(QueryBuilders.matchQuery("instructor_name", courseFilters.getInstructor()));
