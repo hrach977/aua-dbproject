@@ -5,9 +5,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
-/**
- * Created by hrachyayeghishyan on 11/16/17.
- */
+
 @SpringBootApplication
 @EnableAutoConfiguration
 @ComponentScan("aua.dbproject")

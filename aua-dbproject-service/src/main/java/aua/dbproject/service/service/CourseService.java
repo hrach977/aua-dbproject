@@ -8,9 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/**
- * Created by hrachyayeghishyan on 11/30/17.
- */
+
 @Service
 public class CourseService {
 

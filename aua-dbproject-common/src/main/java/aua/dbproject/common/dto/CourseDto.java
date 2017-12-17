@@ -5,9 +5,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.GregorianCalendar;
 
-/**
- * Created by hrachyayeghishyan on 11/16/17.
- */
+
 public class CourseDto {
 
     private String subject_code;
@@ -47,7 +45,10 @@ public class CourseDto {
         this.building = building;
         this.room = room;
         this.instructor_name = instructor_name;
+        this.cluster=cluster;
     }
+
+
 
     public String getCluster() {
         return cluster;

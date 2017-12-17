@@ -6,6 +6,7 @@ import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.Client;
 import org.elasticsearch.index.query.BoolQueryBuilder;
+import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.DocValueFormat;
 import org.elasticsearch.search.SearchHit;
@@ -53,7 +54,8 @@ public class CourseRepository {
             bquery.filter(QueryBuilders.matchQuery("instructor_name", courseFilters.getInstructor()));
         }
         if(!courseFilters.getBegin().isEmpty() && !courseFilters.getFinish().isEmpty()){
-            bquery.must(QueryBuilders.rangeQuery("start_time").gte(courseFilters.getBegin()).lt(courseFilters.getFinish()));
+            bquery.must(QueryBuilders.rangeQuery("start_time").gte(courseFilters.getBegin()).lt("23:00"));
+            bquery.must(QueryBuilders.rangeQuery("end_time").gte("00:00").lte(courseFilters.getFinish()));
         }
         if(!courseFilters.getTitle().isEmpty()){
             bquery.filter(QueryBuilders.matchQuery("title", courseFilters.getTitle()));
@@ -83,6 +85,7 @@ public class CourseRepository {
     private SearchResponse getCS(CourseFilters courseFilters){
         return client.prepareSearch("aua2")
                 .setQuery(filtering(courseFilters))
+                .setSize(3000)
                 .get();
     }
 

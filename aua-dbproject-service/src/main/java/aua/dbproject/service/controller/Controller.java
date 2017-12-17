@@ -11,9 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-/**
- * Created by hrachyayeghishyan on 11/30/17.
- */
+
 @RestController
 public class Controller {
     @Autowired
