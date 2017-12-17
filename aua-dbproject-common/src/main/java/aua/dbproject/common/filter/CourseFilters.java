@@ -1,10 +1,5 @@
 package aua.dbproject.common.filter;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import java.time.LocalTime;
-import java.util.List;
-
 /**
  * Created by hrachyayeghishyan on 11/16/17.
  */
@@ -17,12 +12,13 @@ public class CourseFilters {
     private String weekDays;
     private String clusters;
     //@JsonProperty("busyTime")
-    private String[] busyTime;
+    private String[] busyTimeMWF;
+    private String[] busyTimeTR;
 //    private Boolean upper;
 //
     public CourseFilters(){}
 
-    public CourseFilters(String department, String begin, String finish, String title, String instructor, String weekDays, String clusters, String[] busyTime) {
+    public CourseFilters(String department, String begin, String finish, String title, String instructor, String weekDays, String clusters, String[] busyTimeMWF, String[] busyTimeTR) {
         this.department = department;
         this.begin = begin;
         this.finish = finish;
@@ -30,7 +26,24 @@ public class CourseFilters {
         this.instructor = instructor;
         this.weekDays = weekDays;
         this.clusters = clusters;
-        this.busyTime = busyTime;
+        this.busyTimeMWF = busyTimeMWF;
+        this.busyTimeTR = busyTimeTR;
+    }
+
+    public String[] getBusyTimeMWF() {
+        return busyTimeMWF;
+    }
+
+    public void setBusyTimeMWF(String[] busyTimeMWF) {
+        this.busyTimeMWF = busyTimeMWF;
+    }
+
+    public String[] getBusyTimeTR() {
+        return busyTimeTR;
+    }
+
+    public void setBusyTimeTR(String[] busyTimeTR) {
+        this.busyTimeTR = busyTimeTR;
     }
 
     public String getClusters() {
@@ -89,13 +102,6 @@ public class CourseFilters {
         this.instructor = instructor;
     }
 
-    public String[] getBusyTime() {
-        return busyTime;
-    }
-
-    public void setBusyTime(String[] busyTime) {
-        this.busyTime = busyTime;
-    }
 
     //    public Boolean getUpper() {
 //        return upper;
