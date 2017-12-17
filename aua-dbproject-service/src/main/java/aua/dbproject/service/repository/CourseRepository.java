@@ -39,15 +39,19 @@ public class CourseRepository {
         if(!courseFilters.getBegin().isEmpty() && !courseFilters.getFinish().isEmpty()){
             bquery.must(QueryBuilders.rangeQuery("start_time").gte(courseFilters.getBegin()).lt("23:00"));
             bquery.must(QueryBuilders.rangeQuery("end_time").gte("00:00").lte(courseFilters.getFinish()));
+        } else if (!courseFilters.getBegin().isEmpty()) {
+            bquery.must(QueryBuilders.rangeQuery("start_time").gte(courseFilters.getBegin()).lt("23:00"));
+        } else if (!courseFilters.getFinish().isEmpty()) {
+            bquery.must(QueryBuilders.rangeQuery("end_time").gte("00:00").lte(courseFilters.getFinish()));
         }
         if(!courseFilters.getTitle().isEmpty()){
             bquery.filter(QueryBuilders.matchQuery("title", courseFilters.getTitle()));
         }
         if(!courseFilters.getWeekDays().isEmpty()){
-            bquery.should(QueryBuilders.matchQuery("week_days", courseFilters.getWeekDays()));
+            bquery.must(QueryBuilders.matchQuery("week_days", courseFilters.getWeekDays()));
         }
         if(!courseFilters.getClusters().isEmpty()){
-            bquery.should(QueryBuilders.matchQuery("cluster", courseFilters.getClusters()));
+            bquery.must(QueryBuilders.matchQuery("cluster", courseFilters.getClusters()));
         }
         if(courseFilters.getBusyTime().length!=0){
             bquery.mustNot(QueryBuilders.termsQuery("start_time", courseFilters.getBusyTime()));
