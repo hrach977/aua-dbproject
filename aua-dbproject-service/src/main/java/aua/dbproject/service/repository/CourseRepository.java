@@ -27,9 +27,7 @@ import java.util.List;
 
 import static java.time.LocalTime.parse;
 
-/**
- * Created by hrachyayeghishyan on 11/23/17.
- */
+
 @Repository
 public class CourseRepository {
 

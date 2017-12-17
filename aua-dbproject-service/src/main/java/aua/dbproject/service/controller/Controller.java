@@ -4,10 +4,7 @@ import aua.dbproject.common.dto.CourseDto;
 import aua.dbproject.common.filter.CourseFilters;
 import aua.dbproject.service.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,7 +14,7 @@ public class Controller {
     @Autowired
     CourseService courseService;
 
-
+    @CrossOrigin(origins = "*")
     @RequestMapping(value = "/test", method = RequestMethod.POST)
     public List<CourseDto> deps(@RequestBody CourseFilters courseFilters){
         return courseService.getCsCourseList(courseFilters);
