@@ -1,31 +1,21 @@
 package aua.dbproject.service.repository;
 
+import aua.dbproject.common.dto.CourseDto;
 import aua.dbproject.common.filter.CourseFilters;
-import aua.dbproject.service.service.CourseService;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.Client;
 import org.elasticsearch.index.query.BoolQueryBuilder;
-import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
-import org.elasticsearch.search.DocValueFormat;
 import org.elasticsearch.search.SearchHit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import aua.dbproject.common.dto.CourseDto;
 
-import javax.management.Query;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
-
-import static java.time.LocalTime.parse;
 
 
 @Repository
@@ -35,11 +25,6 @@ public class CourseRepository {
     private Client client;
 
     private CourseFilters courseFilters;
-
-
-//    public LocalTime[] busyTime(CourseFilters courseFilters){
-//
-//    }
 
 
     public BoolQueryBuilder filtering(CourseFilters courseFilters) throws IllegalArgumentException {
